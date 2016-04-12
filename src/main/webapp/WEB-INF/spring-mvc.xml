@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+      http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+      http://www.springframework.org/schema/mvc  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	
+	<!-- 自动扫描@Controller注入为bean -->
+	<!-- <context:component-scan /> -->
+	<!-- 扫描指定的包中的类上的注解，常用的注解有： -->
+	<!-- @Controller 声明Action组件 -->
+	<!-- @Service 声明Service组件 @Service("xxxService") -->
+	<!-- @Repository 声明Dao组件 -->
+	<!-- @Component 泛指组件, 当不好归类时. -->
+	<!-- @RequestMapping("/menu") 请求映射 -->
+	<!-- @Resource 用于注入，( j2ee提供的 ) 默认按名称装配，@Resource(name="beanName") -->
+	<!-- @Autowired 用于注入，(spring提供的) 默认按类型装配 -->
+	<!-- @Transactional( rollbackFor={Exception.class}) 事务管理 -->
+	<!-- @ResponseBody将内容或对象作为 HTTP 响应正文返回，并调用适合HttpMessageConverter的Adapter转换对象，写入输出流 -->
+	<!-- @Scope("prototype") 设定bean的作用域 -->
+	<context:component-scan base-package="com.wn.webapp">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+		    	<constructor-arg value="UTF-8" />
+			</bean>
+			<!-- 将Jackson2HttpMessageConverter的默认格式化输出设为true -->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="prettyPrint" value="true"/>
+            </bean>			
+  		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<!-- 定义JSP文件的位置 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/views" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- 将Controller抛出的异常转到特定View  打开注释后会跳转到500.jsp中-->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+		<property name="exceptionMappings">  
+			<props>  
+				<prop key="java.lang.Throwable">/error/500</prop>
+            </props>  
+		</property>  
+    </bean>
+	
+	<!-- 拦截器 -->
+<!-- 	<mvc:interceptors> <bean class="com.phn.inteceptor" /> </mvc:interceptors> -->
+
+	<!-- 方案一 （二选一）表示不对静态资源如CSS、JS、HTML等进行拦截 -->
+	<!-- 当在web.xml 中 DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源,使用默认的servlet来响应请求 -->
+	<!-- <mvc:default-servlet-handler /> -->
+
+	<!-- 方案二 （二选一） 静态资源映射 -->
+<!-- 	<mvc:resources mapping="/static/**" location="/WEB-INF/static/" /> -->
+
+	<!-- 开启MVC注解,表示SpringMVC支持注解功能 做了很多事情，不包括添加自己定义的拦截器 -->
+	<mvc:annotation-driven />
+	
+</beans>

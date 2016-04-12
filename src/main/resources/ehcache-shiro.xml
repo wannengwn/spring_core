@@ -1,0 +1,13 @@
+<ehcache updateCheck="false" name="shiroCache">
+<!--timeToIdleSeconds 当缓存闲置n秒后销毁 --> 
+<!--timeToLiveSeconds 当缓存存活n秒后销毁 -->
+<!-- timeToIdleSeconds="3600" timeToLiveSeconds="0" -->
+<!-- 上面的表示此缓存最多可以存活一个小时，如果期间超过0分钟未访问 那么此缓存失效！ -->
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="false"
+		diskPersistent="false" diskExpiryThreadIntervalSeconds="120" />
+	<cache name="passwordRetryCache" maxEntriesLocalHeap="2000"
+		eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="0"
+		overflowToDisk="false" statistics="true">
+	</cache>
+</ehcache>

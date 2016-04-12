@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro安全配置</description>
+	
+	<bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">  
+	    <property name="usernameParam" value="username"/>  
+	    <property name="passwordParam" value="password"/>  
+	    <property name="loginUrl" value="/login.jsp"/>  
+	</bean> 
+	
+	<!-- 用户授权信息Cache, 采用EhCache 缓存管理器 使用Ehcache实现 -->
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml" />
+	</bean>
+	
+	<!-- 定义密码验证方法 -->
+	<bean id="repeatLoginLimitCredentialsMatcher" class="com.wn.webapp.credentials.RetryLimitHashedCredentialsMatcher" init-method="init">
+		<property name="hashAlgorithmName" value="md5" />
+		<property name="hashIterations" value="2" />
+		<property name="storedCredentialsHexEncoded" value="true" />
+	</bean>
+	
+	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
+	<bean id="shiroDatabaseRealm" class="com.wn.webapp.realm.ShiroDatabaseRealm">
+		<property name="credentialsMatcher" ref="repeatLoginLimitCredentialsMatcher" />
+	</bean>
+
+	<!-- Shiro's main business-tier object for web-enabled applications -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="shiroDatabaseRealm" />
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/index" />
+		<property name="unauthorizedUrl" value="/logins.html"/>
+		<property name="filterChainDefinitions">
+			<value>
+				/login = authc
+				/logout = logout
+				/** = user
+				/user/* = anon
+			</value>
+		</property>
+	</bean>
+
+
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+</beans>
