@@ -19,7 +19,7 @@ import com.wn.webapp.utils.DateUtil;
 public class UserController {
 	
 	@SuppressWarnings("unused")
-	private Logger logger = LoggerFactory.getLogger(UserControllerTest.class);
+	private Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
 	private UserService userService;

@@ -40,13 +40,13 @@
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/login" />
 		<property name="successUrl" value="/index" />
-		<property name="unauthorizedUrl" value="/logins.html"/>
+		<property name="unauthorizedUrl" value="/login.html"/>
 		<property name="filterChainDefinitions">
 			<value>
 				/login = authc
 				/logout = logout
+				/static/** = anon
 				/** = user
-				/user/* = anon
 			</value>
 		</property>
 	</bean>
