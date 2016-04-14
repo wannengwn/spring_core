@@ -78,7 +78,7 @@
 			<label class="checkbox">
 			<input type="checkbox" name="remember" value="1"/>记住</label>
 			<button type="submit" class="btn green-haze pull-right">
-			Login <i class="m-icon-swapright m-icon-white"></i>
+			登录 <i class="m-icon-swapright m-icon-white"></i>
 			</button>
 		</div>
 		<div class="login-options">
@@ -481,7 +481,7 @@
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script src="${ctx}/static/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="../../assets/global/plugins/select2/select2.min.js"></script>
+<script src="${ctx}/static/assets/global/plugins/select2/select2.min.js" type="text/javascript" ></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="${ctx}/static/assets/global/scripts/metronic.js" type="text/javascript"></script>

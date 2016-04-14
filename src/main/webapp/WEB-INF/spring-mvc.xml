@@ -60,9 +60,12 @@
 	<!-- 方案一 （二选一）表示不对静态资源如CSS、JS、HTML等进行拦截 -->
 	<!-- 当在web.xml 中 DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源,使用默认的servlet来响应请求 -->
 	<!-- <mvc:default-servlet-handler /> -->
-
+	
+	<!-- 定义首页 -->
+	<mvc:view-controller path="/" view-name="redirect:/index"/>
+	
 	<!-- 方案二 （二选一） 静态资源映射 -->
-<!-- 	<mvc:resources mapping="/static/**" location="/WEB-INF/static/" /> -->
+	<mvc:resources mapping="/static/**" location="/static/" />
 
 	<!-- 开启MVC注解,表示SpringMVC支持注解功能 做了很多事情，不包括添加自己定义的拦截器 -->
 	<mvc:annotation-driven />

@@ -50,13 +50,13 @@ public class ShiroDatabaseRealm extends AuthorizingRealm {
     	logger.info("doGetAuthenticationInfo");
         String loginName = (String)token.getPrincipal();
         logger.info("当前登录用户名:"+loginName);
-        User user = userService.findOneByLoginName(loginName);
         if (userService.isRootUser(loginName)){
         	//超级管理员root  123
-          return new SimpleAuthenticationInfo("root", "aeeaa849d945f2e80a5ba468672edc54", 
-            ByteSource.Util.bytes("root21a5cb0e348522d2b9e77bf5e32688a2"), 
-            getName());
+        	return new SimpleAuthenticationInfo("root", "aeeaa849d945f2e80a5ba468672edc54", 
+        			ByteSource.Util.bytes("root21a5cb0e348522d2b9e77bf5e32688a2"), 
+        			getName());
         }
+        User user = userService.findOneByLoginName(loginName);
         if(user == null || (user.getIsDelete().equals(true))) {
             throw new UnknownAccountException();//没找到帐号
         }

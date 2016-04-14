@@ -24,7 +24,7 @@ public class UserService {
 	      User user = new User();
 	      user.setId("root");
 	      user.setLoginName("root");
-	      user.setUserName("root");;
+	      user.setUserName("超级管理员");;
 	      user.setLocked(User.Status.NORMAL);
 	      return user;
 	    }

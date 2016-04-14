@@ -59,14 +59,6 @@ public class loginController {
 		return "/login";
 	}
 	
-	@RequestMapping(value = "/index",method = RequestMethod.GET)
-	public String index(HttpServletRequest request,Model model) throws Exception{
-		String loginName = (String)SecurityUtils.getSubject().getPrincipal();;
-        User user = userService.findOneByLoginName(loginName);
-        model.addAttribute("user", user);
-		return "/index";
-	}
-	
 	@RequestMapping(value = "/logout",method = RequestMethod.GET)
 	public void logout(HttpServletRequest request,Model model){
 		logger.info("退出登录");
