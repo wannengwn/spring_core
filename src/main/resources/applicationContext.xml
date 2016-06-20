@@ -43,7 +43,7 @@
 <!-- 	根据application.properties文件配置，动态匹配数据库 -->
 	<bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="databasePlatform">
-			<bean factory-method="getDialect" class="com.wn.webapp.utils.Hibernates">
+			<bean factory-method="getDialect" class="com.wn.webapp.core.utils.Hibernates">
 				<constructor-arg ref="dataSource"/>
 			</bean>
 		</property>

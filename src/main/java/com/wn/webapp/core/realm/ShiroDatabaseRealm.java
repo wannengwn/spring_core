@@ -1,4 +1,4 @@
-package com.wn.webapp.realm;
+package com.wn.webapp.core.realm;
 
 
 import java.util.HashSet;

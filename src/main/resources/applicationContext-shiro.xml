@@ -18,14 +18,14 @@
 	</bean>
 	
 	<!-- 定义密码验证方法 -->
-	<bean id="repeatLoginLimitCredentialsMatcher" class="com.wn.webapp.credentials.RetryLimitHashedCredentialsMatcher" init-method="init">
+	<bean id="repeatLoginLimitCredentialsMatcher" class="com.wn.webapp.core.credentials.RetryLimitHashedCredentialsMatcher" init-method="init">
 		<property name="hashAlgorithmName" value="md5" />
 		<property name="hashIterations" value="2" />
 		<property name="storedCredentialsHexEncoded" value="true" />
 	</bean>
 	
 	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
-	<bean id="shiroDatabaseRealm" class="com.wn.webapp.realm.ShiroDatabaseRealm">
+	<bean id="shiroDatabaseRealm" class="com.wn.webapp.core.realm.ShiroDatabaseRealm">
 		<property name="credentialsMatcher" ref="repeatLoginLimitCredentialsMatcher" />
 	</bean>
 

@@ -1,4 +1,4 @@
-package com.wn.webapp.credentials;
+package com.wn.webapp.core.credentials;
 
 import net.sf.ehcache.Ehcache;
 import net.sf.ehcache.Element;
