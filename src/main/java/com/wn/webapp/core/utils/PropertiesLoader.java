@@ -5,7 +5,7 @@
  * 
  * $Id: PropertiesLoader.java 1690 2012-02-22 13:42:00Z calvinxiu $
  */
-package com.wn.webapp.utils;
+package com.wn.webapp.core.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

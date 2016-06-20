@@ -1,4 +1,4 @@
-package com.wn.webapp.utils;
+package com.wn.webapp.core.utils;
 
 /*
  *  프로젝트명 : 서초사옥 사무환경 솔루션 구축

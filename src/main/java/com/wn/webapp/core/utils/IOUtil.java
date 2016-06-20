@@ -1,4 +1,4 @@
-package com.wn.webapp.utils;
+package com.wn.webapp.core.utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

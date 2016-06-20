@@ -10,9 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.wn.webapp.core.utils.DateUtil;
 import com.wn.webapp.platform.account.entity.User;
 import com.wn.webapp.platform.account.service.UserService;
-import com.wn.webapp.utils.DateUtil;
 
 @Controller
 @RequestMapping("/user")

@@ -1,4 +1,4 @@
-package com.wn.webapp.utils;
+package com.wn.webapp.core.utils;
 
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.wn.webapp.utils;
+package com.wn.webapp.core.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

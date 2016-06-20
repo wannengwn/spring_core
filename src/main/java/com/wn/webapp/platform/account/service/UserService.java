@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.wn.webapp.core.utils.PasswordHelper;
 import com.wn.webapp.platform.account.dao.UserDao;
 import com.wn.webapp.platform.account.entity.User;
-import com.wn.webapp.utils.PasswordHelper;
 
 @Component
 @Transactional
