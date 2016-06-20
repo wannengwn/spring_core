@@ -1,10 +1,12 @@
-package com.wn.webapp.user.entity;
+package com.wn.webapp.platform.account.entity;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.wn.webapp.core.orm.entity.IdEntity;
 
 
 @Entity

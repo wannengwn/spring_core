@@ -1,4 +1,4 @@
-package com.wn.webapp.user.entity;
+package com.wn.webapp.core.orm.entity;
 
 import java.util.Date;
 

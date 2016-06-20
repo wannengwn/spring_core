@@ -1,10 +1,11 @@
-package com.wn.webapp.user.dao;
+package com.wn.webapp.platform.account.dao;
 
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import com.wn.webapp.user.entity.User;
+import com.wn.webapp.platform.account.entity.User;
+
 
 
 

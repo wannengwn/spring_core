@@ -9,8 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.wn.webapp.user.entity.User;
-import com.wn.webapp.user.service.UserService;
+import com.wn.webapp.platform.account.entity.User;
+import com.wn.webapp.platform.account.service.UserService;
+
 
 @Controller
 public class indexController {
@@ -29,6 +30,6 @@ public class indexController {
 	@RequestMapping(value="/layout_ajax_content_1",method = RequestMethod.GET)
 	public String layout_ajax_content_1(HttpServletRequest request,Model model) throws Exception{
 		
-		return "/layout_ajax_content_1";
+		return "/index/layout_ajax_content_1";
 	}
 }

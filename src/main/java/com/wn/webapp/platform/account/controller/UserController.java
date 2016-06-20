@@ -1,4 +1,4 @@
-package com.wn.webapp.user.controller;
+package com.wn.webapp.platform.account.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,8 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.wn.webapp.user.entity.User;
-import com.wn.webapp.user.service.UserService;
+import com.wn.webapp.platform.account.entity.User;
+import com.wn.webapp.platform.account.service.UserService;
 import com.wn.webapp.utils.DateUtil;
 
 @Controller

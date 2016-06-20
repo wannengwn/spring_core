@@ -13,22 +13,17 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.wn.webapp.user.entity.User;
-import com.wn.webapp.user.service.UserService;
+
 
 @Controller
 public class loginController {
 	
 	private Logger logger = LoggerFactory.getLogger(loginController.class);
-	
-	@Autowired
-	private UserService userService;
 	
 	@RequestMapping(value = "/login",method = RequestMethod.GET)
 	public String login(HttpServletRequest request){

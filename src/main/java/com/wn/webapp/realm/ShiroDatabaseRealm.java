@@ -15,8 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.wn.webapp.user.entity.User;
-import com.wn.webapp.user.service.UserService;
+import com.wn.webapp.platform.account.entity.User;
+import com.wn.webapp.platform.account.service.UserService;
+
 
 /**
  * 

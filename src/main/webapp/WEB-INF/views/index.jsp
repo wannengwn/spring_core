@@ -491,7 +491,7 @@
 					Ajax Submenu 1 </span>
 					<span class="selected">
 					</span>
-					<span class="arrow open">
+					<span class="arrow">
 					</span>
 					</a>
 					<ul class="sub-menu">

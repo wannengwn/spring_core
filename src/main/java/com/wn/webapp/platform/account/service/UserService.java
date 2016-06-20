@@ -1,11 +1,11 @@
-package com.wn.webapp.user.service;
+package com.wn.webapp.platform.account.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.wn.webapp.user.dao.UserDao;
-import com.wn.webapp.user.entity.User;
+import com.wn.webapp.platform.account.dao.UserDao;
+import com.wn.webapp.platform.account.entity.User;
 import com.wn.webapp.utils.PasswordHelper;
 
 @Component
