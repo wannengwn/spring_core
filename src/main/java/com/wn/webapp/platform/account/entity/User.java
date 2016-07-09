@@ -1,11 +1,22 @@
 package com.wn.webapp.platform.account.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.google.common.collect.Lists;
 import com.wn.webapp.core.orm.entity.IdEntity;
 
 
@@ -14,7 +25,6 @@ import com.wn.webapp.core.orm.entity.IdEntity;
 public class User extends IdEntity implements Serializable{
 
 	private static final long serialVersionUID = 2642824748522386466L;
-	
 	private String userName;
 	private String loginName;
 	private String passWord;
@@ -22,6 +32,8 @@ public class User extends IdEntity implements Serializable{
 	private Boolean enable;//是否启用 true启用 false没启用
 	private Status locked;//是否锁定0锁定,1正常
 	private Boolean isDelete;//是否删除 true删除 false正常
+	private List<Role> roles = Lists.newArrayList();//角色
+	private UserImage userImage;
 	
 	public User(){
 		this.enable = Boolean.TRUE;
@@ -78,7 +90,27 @@ public class User extends IdEntity implements Serializable{
 	public void setIsDelete(Boolean isDelete) {
 		this.isDelete = isDelete;
 	}
+	@ManyToMany(cascade={javax.persistence.CascadeType.REFRESH}, fetch=FetchType.LAZY)
+	@JoinTable(name="t_p_account_user_role", joinColumns={@JoinColumn(name="user_id")}, inverseJoinColumns={@JoinColumn(name="role_id")})
+	@Fetch(FetchMode.SUBSELECT)
+	@OrderBy("name")
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="image_id")
+	public UserImage getUserImage() {
+		return userImage;
+	}
+	public void setUserImage(UserImage userImage) {
+		this.userImage = userImage;
+	}
+
 	//使用Enum字段存储，可以实现更复杂的用户状态实现。
 	public static enum Status{
 		LOCKED, NORMAL;

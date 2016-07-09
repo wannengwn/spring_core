@@ -15,7 +15,7 @@ import com.wn.webapp.platform.account.entity.User;
 import com.wn.webapp.platform.account.service.UserService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/platform/account/user")
 public class UserController {
 	
 	@SuppressWarnings("unused")
