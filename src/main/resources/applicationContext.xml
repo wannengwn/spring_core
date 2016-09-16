@@ -72,8 +72,12 @@
 	<!-- JSR303 Validator定义 -->
  	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 	
-	<!-- Spring Data Jpa配置 -->
-	<jpa:repositories base-package="com.wn.webapp" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory" />
+	<!-- Spring Data Jpa配置 factory-class定义扩展通用的持久化方法-->
+	<jpa:repositories base-package="com.wn.webapp" 
+		transaction-manager-ref="transactionManager" 
+		entity-manager-factory-ref="entityManagerFactory" 
+		repository-impl-postfix="Impl"
+		factory-class="com.wn.webapp.core.orm.jap.impl.XqlcRepositoryFactoryBean"/>
 
 	<!-- Jpa 事务配置 -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
