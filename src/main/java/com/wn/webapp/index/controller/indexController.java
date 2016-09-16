@@ -1,5 +1,7 @@
 package com.wn.webapp.index.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
@@ -9,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.wn.webapp.platform.account.entity.Menu;
 import com.wn.webapp.platform.account.entity.User;
+import com.wn.webapp.platform.account.service.MenuService;
 import com.wn.webapp.platform.account.service.UserService;
 
 
@@ -19,10 +23,14 @@ public class indexController {
 	@Autowired
 	private UserService userService;
 	
+	private MenuService menuService;
+	
 	@RequestMapping(value = "/index",method = RequestMethod.GET)
 	public String index(HttpServletRequest request,Model model) throws Exception{
 		String loginName = (String)SecurityUtils.getSubject().getPrincipal();;
         User user = userService.findUserByLoginName(loginName);
+        List<Menu> treeNodeList = menuService.queryVisible();
+        model.addAttribute("moduleTree", treeNodeList);
         model.addAttribute("user", user);
 		return "/index";
 	}

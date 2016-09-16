@@ -243,6 +243,7 @@ public class IOUtil {
 	 * @return
 	 * @throws IOException
 	 */
+	@SuppressWarnings("resource")
 	public static ByteBuffer readFileToBuffer(String filePath)
 			throws IOException {
 		// System.gc(); // 가비지 콜렉터 실행시켜 메모리 확보
@@ -384,6 +385,7 @@ public class IOUtil {
 		if (contents == null) {
 			throw new IOException("file contents does not exist");
 		}
+		@SuppressWarnings("resource")
 		RandomAccessFile raf = new RandomAccessFile(filePath, "rw");
 		raf.seek(raf.length());
 		raf.writeBytes(contents);
@@ -401,6 +403,7 @@ public class IOUtil {
 		if (contents == null) {
 			throw new IOException("file contents does not exist");
 		}
+		@SuppressWarnings("resource")
 		RandomAccessFile raf = new RandomAccessFile(filePath, "rw");
 		raf.seek(raf.length());
 		raf.write(contents);

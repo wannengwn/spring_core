@@ -22,17 +22,25 @@ import com.wn.webapp.core.orm.entity.IdEntity;
 public class Permission extends IdEntity implements Serializable {
 	private static final long serialVersionUID = 8902025344953872667L;
 	private String name;//权限名称
+	private String permissionUrl;//权限路径
 	private Permission permission;//权限
 	private List<Role> roles = Lists.newArrayList();//角色
 	private Boolean enable;//是否启用
 	private Boolean isDelete;//是否删除
 	private List<Permission> children = Lists.newArrayList();//子节点
+	private String description;//描述
 	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getPermissionUrl() {
+		return permissionUrl;
+	}
+	public void setPermissionUrl(String permissionUrl) {
+		this.permissionUrl = permissionUrl;
 	}
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="pid")
@@ -69,6 +77,12 @@ public class Permission extends IdEntity implements Serializable {
 	}
 	public void setChildren(List<Permission> children) {
 		this.children = children;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	
