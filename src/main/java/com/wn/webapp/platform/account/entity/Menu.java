@@ -3,6 +3,7 @@ package com.wn.webapp.platform.account.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -79,6 +80,11 @@ public class Menu extends IdEntity implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	/**
+	 * ManyToOne(fetch=FetchType.LAZY)
+	 * fetch=FetchType.LAZY：懒加载，加载一个实体时，定义懒加载的属性不会马上从数据库中加载。
+	 * fetch=FetchType.EAGER：急加载，加载一个实体时，定义急加载的属性会立即从数据库中加载。
+	 */
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="permission_id")
 	public Permission getPermission() {
@@ -95,7 +101,7 @@ public class Menu extends IdEntity implements Serializable {
 	public void setMenu(Menu menu) {
 		this.menu = menu;
 	}
-	@OneToMany(cascade={javax.persistence.CascadeType.ALL}, mappedBy="menu")
+	@OneToMany(cascade={CascadeType.ALL}, mappedBy="menu")
 	@Fetch(FetchMode.SUBSELECT)
 	public List<Menu> getChildren() {
 		return children;

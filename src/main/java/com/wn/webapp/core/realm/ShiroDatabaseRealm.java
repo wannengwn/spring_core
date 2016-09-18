@@ -38,8 +38,11 @@ public class ShiroDatabaseRealm extends AuthorizingRealm {
         Set<String> roles = new HashSet<String>();
         roles.add(username);
         Set<String> permissions = new HashSet<String>();
-        permissions.add("helloWorldController01:list");
-        permissions.add("helloWorldController02:list");
+        permissions.add("test1");
+        permissions.add("test2");
+//        permissions.add("test3");
+        permissions.add("test4");
+        permissions.add("test5");
         authorizationInfo.setRoles(roles);
         authorizationInfo.setStringPermissions(permissions);
 
