@@ -89,6 +89,14 @@
 	<session-config>
 		<session-timeout>60</session-timeout>
 	</session-config>
+	
+	<!-- 自定义标签库 -->
+	<jsp-config> 
+		<taglib> 
+			<taglib-uri>http://www.xqlc.com/xqlc</taglib-uri> 
+			<taglib-location>/WEB-INF/taglib/xqlc-tags.tld</taglib-location> 
+		</taglib> 
+	</jsp-config> 
 
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>

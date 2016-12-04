@@ -46,13 +46,13 @@
 	</bean>
 	
 	<!-- 将Controller抛出的异常转到特定View  打开注释后会跳转到500.jsp中-->
-	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
-		<property name="exceptionMappings">  
-			<props>  
-				<prop key="java.lang.Throwable">/error/500</prop>
-            </props>  
-		</property>  
-    </bean>
+<!-- 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">   -->
+<!-- 		<property name="exceptionMappings">   -->
+<!-- 			<props>   -->
+<!-- 				<prop key="java.lang.Throwable">/error/500</prop> -->
+<!--             </props>   -->
+<!-- 		</property>   -->
+<!--     </bean> -->
 	
 	<!-- 拦截器 -->
 <!-- 	<mvc:interceptors> <bean class="com.phn.inteceptor" /> </mvc:interceptors> -->
@@ -68,6 +68,14 @@
 	<mvc:resources mapping="/static/**" location="/static/" />
 
 	<!-- 开启MVC注解,表示SpringMVC支持注解功能 做了很多事情，不包括添加自己定义的拦截器 -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven >
+		<mvc:argument-resolvers>
+			<bean class="org.springframework.data.web.PageableHandlerMethodArgumentResolver">
+				<property name="oneIndexedParameters" value="true" />
+				<property name="pageParameterName" value="page.page" />
+				<property name="sizeParameterName" value="page.size" />
+			</bean>
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
 	
 </beans>
