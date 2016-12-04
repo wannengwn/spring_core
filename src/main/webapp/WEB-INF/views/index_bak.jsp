@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -28,7 +27,6 @@
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
 <link rel="stylesheet" type="text/css" href="${ctx}/static/assets/global/plugins/select2/select2.css"/>
-<link rel="stylesheet" type="text/css" href="${ctx}/static/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
 <!-- END PAGE LEVEL STYLES -->
 <!-- BEGIN THEME STYLES -->
 <link href="${ctx}/static/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
@@ -486,10 +484,64 @@
 					</span>
 					</a>
 				</li>
-				<!--递归菜单 -->
-				<c:set var="nodes" value="${moduleTree}" scope="request" />
-				<jsp:include page="sidebar-menu.jsp" />
-				
+				<li>
+					<a href="javascript:;">
+					<i class="fa fa-cogs"></i>
+					<span class="title">
+					Ajax Submenu 1 </span>
+					<span class="selected">
+					</span>
+					<span class="arrow">
+					</span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a class="ajaxify" href="layout_ajax_content_2.html">
+							Ajax Link Sample 1 </a>
+						</li>
+						<li>
+							<a class="ajaxify" href="layout_ajax_content_3.html">
+							Ajax Link Sample 2 </a>
+						</li>
+						<li>
+							<a class="ajaxify" href="layout_ajax_content_2.html">
+							Ajax Link Sample 3 </a>
+						</li>
+						<li>
+							<a class="ajaxify" href="layout_ajax_content_3.html">
+							Ajax Link Sample 4 </a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<i class="fa fa-cogs"></i>
+					<span class="title">
+					Ajax Submenu 2 </span>
+					<span class="selected">
+					</span>
+					<span class="arrow">
+					</span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a class="ajaxify" href="layout_ajax_content_2.html">
+							Ajax Link Sample 1 </a>
+						</li>
+						<li>
+							<a class="ajaxify" href="layout_ajax_content_3.html">
+							Ajax Link Sample 2 </a>
+						</li>
+						<li>
+							<a class="ajaxify" href="layout_ajax_content_2.html">
+							Ajax Link Sample 3 </a>
+						</li>
+						<li>
+							<a class="ajaxify" href="layout_ajax_content_3.html">
+							Ajax Link Sample 4 </a>
+						</li>
+					</ul>
+				</li>
 				<li class="last">
 					<a href="javascript:;">
 					<i class="fa fa-cogs"></i>
@@ -526,7 +578,7 @@
 	<!-- END SIDEBAR1 -->
 	<!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
-		<div class="page-content" style="min-height:1120px">
+		<div class="page-content">
 			<!-- BEGIN STYLE CUSTOMIZER -->
 			<div class="theme-panel hidden-xs hidden-sm">
 				<div class="toggler">
@@ -1315,25 +1367,18 @@
 <script src="${ctx}/static/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <script src="${ctx}/static/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->
 <script type="text/javascript" src="${ctx}/static/assets/global/plugins/select2/select2.min.js"></script>
-<script type="text/javascript" src="${ctx}/static/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${ctx}/static/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="${ctx}/static/assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="${ctx}/static/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
 <script src="${ctx}/static/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
 <script src="${ctx}/static/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
-<script src="${ctx}/static/assets/admin/pages/scripts/table-managed.js" type="text/javascript"></script>
 <script>
 jQuery(document).ready(function() {    
    Metronic.init(); // init metronic core components
-	Layout.init(); // init current layout
+Layout.init(); // init current layout
 QuickSidebar.init(); // init quick sidebar
 Demo.init(); // init demo features
-   //TableManaged.init();
-$('.page-sidebar .ajaxify.start').click() // load the content for the dashboard page.
+   $('.page-sidebar .ajaxify.start').click() // load the content for the dashboard page.
 });
 </script>
 <!-- END JAVASCRIPTS -->
