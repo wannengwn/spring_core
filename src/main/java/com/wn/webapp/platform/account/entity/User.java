@@ -36,6 +36,7 @@ public class User extends IdEntity implements Serializable{
 	private UserImage userImage;
 	
 	public User(){
+		//默认设置启用，正常，不删除状态
 		this.enable = Boolean.TRUE;
 		this.locked = Status.NORMAL;
 		this.isDelete = Boolean.FALSE;

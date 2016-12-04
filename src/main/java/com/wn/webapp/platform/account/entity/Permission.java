@@ -23,6 +23,7 @@ public class Permission extends IdEntity implements Serializable {
 	private static final long serialVersionUID = 8902025344953872667L;
 	private String name;//权限名称
 	private String permissionUrl;//权限路径
+	private Boolean rootNode;//是否是根节点
 	private Permission permission;//权限
 	private List<Role> roles = Lists.newArrayList();//角色
 	private Boolean enable;//是否启用
@@ -30,6 +31,13 @@ public class Permission extends IdEntity implements Serializable {
 	private List<Permission> children = Lists.newArrayList();//子节点
 	private String description;//描述
 	
+	public Permission() {
+		//默认设置不是根节点，不启用，不删除状态
+		this.rootNode = Boolean.FALSE;
+		this.enable = Boolean.FALSE;
+		this.isDelete = Boolean.FALSE;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -41,6 +49,12 @@ public class Permission extends IdEntity implements Serializable {
 	}
 	public void setPermissionUrl(String permissionUrl) {
 		this.permissionUrl = permissionUrl;
+	}
+	public Boolean getRootNode() {
+		return rootNode;
+	}
+	public void setRootNode(Boolean rootNode) {
+		this.rootNode = rootNode;
 	}
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="pid")

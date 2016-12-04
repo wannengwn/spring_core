@@ -26,16 +26,18 @@ public class UserController {
 	
 	@RequestMapping(value="/saveUser",method = RequestMethod.GET)
 	public String saveUser(HttpServletRequest request,Model model){
-		User user = new User();
-		user.setUserName("管理员");
-		user.setLoginName("admin");
-		user.setPassWord("admin");
-		user.setCreateUser("admin");
-		user.setCreateTime(DateUtil.getNow());
-		user.setUpdateUser("admin");
-		user.setUpdateTime(DateUtil.getNow());
-		userService.save(user);
-		model.addAttribute("user", user);
+		for (int i = 0; i < 50; i++) {
+			User user = new User();
+			user.setUserName("管理员"+(i+1));
+			user.setLoginName("admin"+(i+1));
+			user.setPassWord("admin!@#123");
+			user.setCreateUser("admin"+(i+1));
+			user.setCreateTime(DateUtil.getNow());
+			user.setUpdateUser("admin"+(i+1));
+			user.setUpdateTime(DateUtil.getNow());
+			userService.save(user);
+		}
+		//model.addAttribute("user", user);
 		return "/";
 	}
 	

@@ -23,7 +23,7 @@ public class Menu extends IdEntity implements Serializable {
 	private static final long serialVersionUID = 5902247051054622049L;
 	private String name;//菜单名称
 	private String url;//菜单url
-	private Boolean isRoot;//是否是根节点
+	private Boolean rootNode;//是否是根节点 
 	private Boolean visible;//是否可见
 	private Boolean isDelete;//是否删除
 	private String iconClass;//样式
@@ -33,7 +33,8 @@ public class Menu extends IdEntity implements Serializable {
 	private List<Menu> children = Lists.newArrayList();//子节点
 	
 	public Menu(){
-		this.isRoot = Boolean.FALSE;
+		//默认设置不删除，不可见，不是跟节点状态
+		this.rootNode = Boolean.FALSE;
 		this.visible = Boolean.FALSE;
 		this.isDelete = Boolean.FALSE;
 	}
@@ -50,11 +51,11 @@ public class Menu extends IdEntity implements Serializable {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public Boolean getIsRoot() {
-		return isRoot;
+	public Boolean getRootNode() {
+		return rootNode;
 	}
-	public void setIsRoot(Boolean isRoot) {
-		this.isRoot = isRoot;
+	public void setRootNode(Boolean rootNode) {
+		this.rootNode = rootNode;
 	}
 	public Boolean getVisible() {
 		return visible;

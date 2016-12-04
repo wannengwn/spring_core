@@ -23,10 +23,18 @@ public class Role extends IdEntity implements Serializable {
 	private static final long serialVersionUID = 6455070286165540936L;
 	private String name;//角色名称
 	private String description;//角色描述
+	private Boolean rootNode;//是否是根节点
 	private Boolean enable;//是否启用
 	private Boolean isDelete;//是否删除
 	private List<User> users = Lists.newArrayList();//对应用户
 	private List<Permission> permissions = Lists.newArrayList();//对应权限
+	
+	public Role() {
+		//默认设置不是根节点，不启用，不删除状态
+		this.rootNode=Boolean.FALSE;
+		this.enable=Boolean.FALSE;
+		this.isDelete=Boolean.FALSE;
+	}
 	
 	public String getName() {
 		return name;
@@ -45,6 +53,12 @@ public class Role extends IdEntity implements Serializable {
 	}
 	public void setEnable(Boolean enable) {
 		this.enable = enable;
+	}
+	public Boolean getRootNode() {
+		return rootNode;
+	}
+	public void setRootNode(Boolean rootNode) {
+		this.rootNode = rootNode;
 	}
 	public Boolean getIsDelete() {
 		return isDelete;

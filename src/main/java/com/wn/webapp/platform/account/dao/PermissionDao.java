@@ -11,15 +11,15 @@ import com.wn.webapp.platform.account.entity.Permission;
 
 public interface PermissionDao extends XqlcJpaRepository<Menu, String> {
 
-	@Query("select p from Permission p where p.visible=true and p.isDelete=false")
-	public abstract List<Permission> findAllVisible();
-
-	@Query("select p from Permission p where p.visible=true and p.isDelete=false")
-	public abstract List<Permission> findAllVisible(Sort paramSort);
-
-	@Query("select p from Permission p where p.visible=true and p.isDelete=false and p.isRoot=?1")
-	public abstract List<Permission> findAllVisible(Boolean isRoot);
-
-	@Query("select p from Permission p where p.visible=true and p.isDelete=false and p.url like ?1")
-	public abstract List<Permission> findVisibleByUrl(String paramString, Sort paramSort);
+//	@Query("select p from Permission p where p.visible=true and p.isDelete=false")
+//	public abstract List<Permission> findAllVisible();
+//
+//	@Query("select p from Permission p where p.visible=true and p.isDelete=false")
+//	public abstract List<Permission> findAllVisible(Sort paramSort);
+//
+//	@Query("select p from Permission p where p.visible=true and p.isDelete=false and p.isRoot=?1")
+//	public abstract List<Permission> findAllVisible(Boolean isRoot);
+//
+//	@Query("select p from Permission p where p.visible=true and p.isDelete=false and p.url like ?1")
+//	public abstract List<Permission> findVisibleByUrl(String paramString, Sort paramSort);
 }

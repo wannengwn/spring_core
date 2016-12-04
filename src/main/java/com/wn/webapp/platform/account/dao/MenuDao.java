@@ -30,7 +30,7 @@ public interface MenuDao extends XqlcJpaRepository<Menu, String> {
 	 * @param isRoot 是否为根节点 true/false
 	 * @return 菜单集合
 	 */
-	@Query("select m from Menu m where m.visible=true and m.isDelete=false and m.isRoot=?1")
+	@Query("select m from Menu m where m.visible=true and m.isDelete=false and m.rootNode=?1")
 	public abstract List<Menu> findAllVisible(Boolean isRoot);
 
 	/**
