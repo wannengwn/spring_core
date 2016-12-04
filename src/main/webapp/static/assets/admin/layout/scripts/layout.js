@@ -248,17 +248,62 @@ var Layout = function () {
             var url = $(this).attr("href");
             var pageContent = $('.page-content');
             var pageContentBody = $('.page-content .page-content-body');
-
             Metronic.startPageLoading();
 
             if (Metronic.getViewPort().width < resBreakpointMd && $('.page-sidebar').hasClass("in")) { // close the menu on mobile view while laoding a page 
                 $('.page-header .responsive-toggler').click();
             }
-
+            
             $.ajax({
                 type: "GET",
                 cache: false,
                 url: url,
+                dataType: "html",
+                success: function (res) {
+                	
+                    Metronic.stopPageLoading();
+                    pageContentBody.html(res);
+                    Layout.fixContentHeight(); // fix content height
+                    Metronic.initAjax(); // initialize core stuff
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    pageContentBody.html('<h4>Could not load the requested content.</h4>');
+                    Metronic.stopPageLoading();
+                }
+            });
+        });
+        
+        // handle ajax submin within main content 2016-12-04新增
+        $('.page-content').on('click', '.submit', function (e,formId) {
+        	e.preventDefault();
+        	var method = "GET"
+        	var form
+        	if(formId==null || formId=="" || formId=="undefined"){
+        		form = $(this).closest("form")
+        	}else {
+        		form = $('#'+formId)
+        	}
+        	var url = form.attr("action");
+        	var m = form.attr("method");
+        	if(m!=null){
+        		method = m
+        	}
+        	
+        	Metronic.scrollTop();
+
+            var pageContent = $('.page-content');
+            var pageContentBody = $('.page-content .page-content-body');
+            Metronic.startPageLoading();
+
+            if (Metronic.getViewPort().width < resBreakpointMd && $('.page-sidebar').hasClass("in")) { // close the menu on mobile view while laoding a page 
+                $('.page-header .responsive-toggler').click();
+            }
+            
+            $.ajax({
+                type: method,
+                cache: false,
+                url: url,
+                data:form.serialize(),
                 dataType: "html",
                 success: function (res) {
                     Metronic.stopPageLoading();
@@ -272,7 +317,7 @@ var Layout = function () {
                 }
             });
         });
-
+        
         // handle scrolling to top on responsive menu toggler click when header is fixed for mobile view
         $(document).on('click', '.page-header-fixed-mobile .page-header .responsive-toggler', function(){
             Metronic.scrollTop(); 
